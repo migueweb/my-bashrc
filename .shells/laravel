@@ -1,0 +1,59 @@
+#!/bin/bash 
+
+# Start new laravel project with composer
+function laravel() 
+{
+    composer create-project laravel/laravel $1
+}
+
+# "php artisan" shorter
+function art() 
+{
+    php artisan $1
+}
+
+#*******************************************************************
+# Make controllers, models, etc
+#*******************************************************************
+
+function m:m() 
+{
+    php artisan make:migration create_$1_table
+}
+
+function m:c() 
+{
+    php artisan make:controller $1Controller
+}
+
+function m:cr() 
+{
+    php artisan make:controller $1Controller --resource
+}
+
+function m:ml() 
+{
+    php artisan make:model $1
+}
+
+function m:fr() 
+{
+    php artisan make:request $1Request
+}
+
+function m:ft() 
+{
+    php artisan make:factory $1Factory
+}
+
+function m:s() 
+{
+    php artisan make:seeder $1Seeder
+}
+
+# Simple commands 
+alias serve="art serve"
+alias key="art key:generate"
+alias r:l="art route:list"
+alias migrate="art migrate"
+alias fresh="art migrate:fresh --seed"

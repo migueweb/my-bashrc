@@ -1,0 +1,45 @@
+#!/bin/bash 
+
+# MySQL service aliases
+
+alias mysqlst="service mysql status"
+alias mysqlgo="sudo service mysql start"
+alias mysqlrt="sudo service mysql restart"
+alias mysqlen="sudo service mysql stop"
+
+# Apache Server
+
+alias apachest="service apache2 status"
+alias apachego="sudo service apache2 start"
+alias apachert="sudo service apache2 restart"
+alias apacheen="sudo service apache2 stop"
+
+# LAMP Server
+
+# Start Apache and mysql server
+alias lampgo="sudo service apache2 start && sudo service mysql start"
+
+# Restart Apache and mysql server
+alias lamprt="sudo service apache2 restart && sudo service mysql restart"
+
+# Stop Apache and mysql server
+alias lampen="sudo service apache2 stop && sudo service mysql stop"
+
+# lampst 
+function lampst() {
+    APACHE_STATUS=$(service apache2 status | grep -o "Active: .*" | awk '{print $2}')
+    MYSQL_STATUS=$(service mysql status | grep -o "Active: .*" | awk '{print $2}') 
+
+    if [[ $APACHE_STATUS == "active" ]]; then
+        echo -e "\e[32mApache2 is running...\e[0m"
+    else
+        echo -e "\e[31mApache2 is not running...\e[0m"
+    fi
+
+    if [[ $MYSQL_STATUS == "active" ]]; then
+        echo -e "\e[32mMySQL is running...\e[0m"
+    else
+        echo -e "\e[31mMySQL is not running...\e[0m"
+    fi
+}
+
