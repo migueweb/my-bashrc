@@ -19,22 +19,14 @@ function drop-stash()
 # Git Commands
 # Add and Commit are used as functions
 alias gaa='git add *'
-alias gb='git br' 
 alias gd='git diff' 
 alias gdc='git diff --cached' 
 alias gl='git log'
+alias glo='git log --oneline'
 alias gp='git pull' 
-alias gs='git status' 
-alias gst='git stash' 
-alias gplo='git pull origin master'
-alias gbv='git branch -vv'
+alias gst='git status' 
 alias gpo='git push origin main'
 alias gs='git status'
 alias gr='git reflog'
-alias glf='git ls-files'
 alias gc='git commit -m'
-
-
-# Useful when working on a branch and 
-# want to summarize changes against master
-alias gdmno='git diff main  --name-only'
+alias gcf='git config --list'
